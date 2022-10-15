@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="taojian">
+    <test name="mokuai">
+        <classes>
+            <class name="com.tester.extend.demo.TestMethodsDemo">
+                <methods>
+                    <include name="test1"/>
+                    <include name="test2"/>
+                    <include name="test3"/>
+                    <include name="logDemo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+<!--    监听器 用于完成测试报告的数据-->
+    <listeners>
+        <listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter">
+        </listener>
+    </listeners>
+
+
+</suite>
