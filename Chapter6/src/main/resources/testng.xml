@@ -16,8 +16,10 @@
 
 <!--    监听器 用于完成测试报告的数据-->
     <listeners>
-        <listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter">
-        </listener>
+<!--        <listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter">-->
+<!--            -->
+<!--        </listener>-->
+        <listener class-name="com.tester.extend.demo.TestReportListener"></listener>
     </listeners>
 
 

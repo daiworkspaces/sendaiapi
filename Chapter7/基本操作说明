@@ -1,0 +1,9 @@
+java -jar ./moco-runner-1.3.0-standalone.jar http  -p 8826 -c start.json
+
+说明：-p 后面的是端口号
+-c 后面是配置文件  start.json
+start.json :配置文件
+http/https  协议
+
+使用：cd到文件夹的目录下执行上面的命令，然后在浏览器中输入配置文件中的路径
+
