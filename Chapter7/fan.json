@@ -1,0 +1,30 @@
+[
+  {
+    "description": "这是一个返回cookie的get请求",
+    "request": {
+      "uri": "/get/cookiesDemo",
+      "method": "Get"
+    },
+    "response": {
+      "cookies":{
+        "login": "true"
+      },
+      "text": "这是一个cookies的返回"
+    }
+  },
+  {
+    "description": "这是一个需要cookie的get请求",
+    "request": {
+      "uri": "/get/cookies/huoQu",
+      "method": "Get",
+      "cookies": {
+        "login": "true"
+      }
+      },
+    "response": {
+      "text": "这是一个需要带cookies访问的get请求，请求成功"
+    }
+
+  }
+
+]
