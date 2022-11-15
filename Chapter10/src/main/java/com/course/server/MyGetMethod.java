@@ -15,7 +15,7 @@ import java.util.Objects;
 @Api(value = "/")
 public class MyGetMethod {
 
-    @RequestMapping(value = "/getCookies",method = RequestMethod.GET)
+    @RequestMapping(value = "/get/getCookies",method = RequestMethod.GET)
     @ApiOperation(value = "通过这个方法可以获取cookies",httpMethod ="GET" )
     public String getCookies(HttpServletResponse response){
         //HttpServerletRequest 装请求信息的类
