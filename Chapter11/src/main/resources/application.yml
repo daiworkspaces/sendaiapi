@@ -1,0 +1,22 @@
+server:
+  port: 8083
+
+logging:
+  file:mylog.log
+  path:logs
+
+
+
+spring:
+  application:
+    name: report
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-wz928az8hh05yusb0po.mysql.rds.aliyuncs.com:3306/course
+    username: testcourse
+    password: abc12QW@3456
+
+mybatis:
+  type-aliases-package: com.course.com.course.model
+  mapper-locations:
+    - mapper/*
