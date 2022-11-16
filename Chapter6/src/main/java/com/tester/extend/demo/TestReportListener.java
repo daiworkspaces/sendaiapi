@@ -12,12 +12,17 @@ import java.util.*;
 public class TestReportListener implements IReporter {
     // 日期格式化
     private static Date date = new Date();
-    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd--HH:mm:ss");
+    private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd==HH时mm分ss秒");
     private static String reportdate = simpleDateFormat.format(date);
-    private static String getReportName = " 接口自动化测试报告-" + reportdate;
+    private static String getReportName = "接口自动化测试报告" + reportdate;
+    //private static String getReportName = "接口自动化测试报告";
     // 定义html模板所在路径
     private String templatePath = this.getClass().getResource("/").getPath() + "report/template.html";
+    //private String templatePath = System.getProperty("user.dir")+File.separator+"report/template.html";
+
     // 定义报告生成的路径
+    //定义生成测试报告的路径和文件名，为兼容windows和Linux此处使用File.separator代替分隔符
+
     private String reportDirPath = System.getProperty("user.dir") + File.separator + "target" + File.separator + "test-output" + File.separator + "report";
     private String reportPath = reportDirPath + File.separator + getReportName + ".html";
     private String name = "DemoTest";
