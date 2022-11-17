@@ -6,6 +6,5 @@
 <mapper namespace="com.course">
     <select id="getUserCount" resultType="Integer">
         select count(*) from user;
-
     </select>
 </mapper>
