@@ -2,11 +2,14 @@ package com.course.cases;
 
 import com.course.config.TestConfig;
 import com.course.model.GetUserInfoCase;
+import com.course.model.User;
 import com.course.utils.DataBaseUtil;
+import com.google.gson.JsonArray;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 public class GetUserInfoTest {
 
@@ -17,5 +20,15 @@ public class GetUserInfoTest {
         System.out.println(getUserInfoCase.toString());
         System.out.println(TestConfig.getUserInfoUrl);
 
+        //发送请求获取结果
+        JsonArray resultJson = getJsonResult(getUserInfoCase);
+
+
+        //验证结果
+
+    }
+
+    private JsonArray getJsonResult(GetUserInfoCase getUserInfoCase) {
+        return null;
     }
 }
