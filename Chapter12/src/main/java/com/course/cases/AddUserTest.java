@@ -48,8 +48,8 @@ public class AddUserTest {
         param.addProperty("isDelete",addUserCase.getIsDelete());
 
         //设置头信息 //设置cookies
-        post.setHeader("Content-type","application/json");
         post.addHeader("Cookie", TestConfig.cookieStore.toString());
+        post.setHeader("content-type","application/json");
 
 
         StringEntity entity = new StringEntity(param.toString(),"UTF-8");
