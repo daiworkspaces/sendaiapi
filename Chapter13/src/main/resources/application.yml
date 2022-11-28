@@ -15,7 +15,7 @@ mybatis:
   type-aliases-package: com.course.com.course.model
   configuration:
     #开启驼峰映射
-    map-underscore-to-camel-case: true
+    map-underscore-to-camel-case: false
     #sql日志的打印
     log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
 

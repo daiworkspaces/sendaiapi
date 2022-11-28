@@ -1,5 +1,6 @@
 package com.course.controller;
 
+
 import com.course.model.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -29,7 +30,7 @@ public class UserManager {
     @ApiOperation(value = "登录接口",httpMethod = "POST")
     @RequestMapping(value = "/login",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
     public Boolean login(HttpServletResponse response , @RequestBody User user){
-        int i = template.selectOne("login",user);
+        int i = template.selectOne("login",1);
         log.info("传递进去的user参数"+user.toString());
         log.info("查询语句login"+ template.toString());
         Cookie cookie = new Cookie("login","true");

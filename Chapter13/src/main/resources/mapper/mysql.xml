@@ -5,7 +5,7 @@
 
 <mapper namespace="com.course">
     <!--登录接口sql-->
-    <select id="login" parameterType="com.course.model.User" resultType="Integer">
+    <select id="loginCase" parameterType="com.course.model.User" resultType="Integer">
         select count(*) from user
         where userName = #{userName}
         and password = #{password};
