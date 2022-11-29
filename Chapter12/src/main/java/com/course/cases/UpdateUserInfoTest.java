@@ -18,15 +18,18 @@ import java.io.IOException;
 public class UpdateUserInfoTest {
 
     @Test(dependsOnGroups="loginTrue",description = "更改用户信息")
-    public void updateUserInfo() throws IOException {
+    public void updateUserInfo() throws IOException, InterruptedException {
         SqlSession sqlSession = DataBaseUtil.getSqlSession();
-        UpdateUserInfoCase updateUserInfoCase = sqlSession.selectOne("updateUserInfoCase",1);
+        UpdateUserInfoCase updateUserInfoCase = sqlSession.selectOne("updateUserInfoCase",3);
         System.out.println(updateUserInfoCase.toString());
         System.out.println(TestConfig.updateUserInfoUrl);
 
+        Thread.sleep(3000);
         int result = getResult(updateUserInfoCase);
 
         User user = sqlSession.selectOne(updateUserInfoCase.getExpected());
+        System.out.println(user.toString());
+        System.out.println(result);
         Assert.assertNotNull(user);
         Assert.assertNotNull(result);
     }

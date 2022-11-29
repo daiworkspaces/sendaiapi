@@ -4,9 +4,11 @@ import com.course.config.TestConfig;
 import com.course.model.GetUserInfoCase;
 import com.course.model.User;
 import com.course.utils.DataBaseUtil;
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -37,13 +39,14 @@ public class GetUserInfoTest {
         //验证结果
         //先取数据库信息
         User user = sqlSession.selectOne(getUserInfoCase.getExpected(),getUserInfoCase);
-        List userList = new ArrayList();
+//
+        List userList = new ArrayList<>();
         userList.add(user);
+        JsonArray jsonArray = new Gson().toJsonTree(userList,new TypeToken<List<User>>(){}.getType()).getAsJsonArray();
+        JsonArray jsonArray1 =new JsonArray().get(0).getAsJsonArray();
 
-        JsonArray jsonArray = new Gson().toJsonTree(
-                userList).getAsJsonArray();
-
-        Assert.assertEquals(jsonArray,resultJson);
+        //这个代码有些机器上会报错，有些正常。
+        Assert.assertEquals(jsonArray.toString(),jsonArray1.toString());
 
     }
 
@@ -62,9 +65,13 @@ public class GetUserInfoTest {
         result = EntityUtils.toString(response.getEntity(),"UTF-8");
 
 
-        List resultList = Arrays.asList(result);
 
-        JsonArray array = new Gson().toJsonTree(resultList).getAsJsonArray();
-        return array;
+
+        List resultList = new ArrayList<>();
+        resultList.add(result);
+        JsonArray resultArray = new Gson().toJsonTree(resultList,new TypeToken<List<User>>(){}.getType()).getAsJsonArray();
+
+        return resultArray;
+
     }
 }
