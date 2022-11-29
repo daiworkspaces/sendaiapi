@@ -28,4 +28,9 @@
     <select id="updateUserInfoCase" parameterType="Integer" resultType="com.course.model.UpdateUserInfoCase">
         select * from updateUserInfoCase where id =#{id};
     </select>
+
+
+    <select id="addUser" parameterType="com.course.model.User" resultType="Integer">
+        count (1) from user  where userName = #{user}
+    </select>
 </mapper>

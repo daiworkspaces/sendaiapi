@@ -3,7 +3,6 @@ package com.course.cases;
 import com.course.config.TestConfig;
 import com.course.model.InterfaceName;
 import com.course.model.LoginCase;
-import com.course.model.User;
 import com.course.utils.ConfigFile;
 import com.course.utils.DataBaseUtil;
 import com.google.gson.JsonObject;
@@ -39,98 +38,51 @@ public class LoginTest {
         TestConfig.updateUserInfoUrl = ConfigFile.getUrl(InterfaceName.UPDATEUSERINFO);
 
         TestConfig.httpClient = HttpClients.createDefault();
+        TestConfig.cookieStore = new BasicCookieStore();
 
     }
 
-//    @Test(groups = "loginTrue",description = "用户登录成功接口测试")
-//    public void loginTrue() throws IOException {
-//        SqlSession sqlSession = DataBaseUtil.getSqlSession();
-//        User user = sqlSession.selectOne("Login",1);
-//        System.out.println(user.toString());
-//        System.out.println(TestConfig.loginUri);
-//
-//
-//        //第一步发送请求 loginCase是通过接口获取到的数据，用此数据完成
-//        //数据的http请求然后获取result在与expected数据对比进行校验
-//        String result = getResult(user);
-//
-//        //第二步验证结果
-//        Assert.assertEquals(user,result);
-//
-//
-//    }
-
-//    private String getResult(User user) throws IOException {
-//        HttpPost post = new HttpPost();
-//        JsonObject param = new JsonObject();
-//        param.addProperty("userName",user.getUserName());
-//        param.addProperty("password",user.getPassword());
-//        param.addProperty("age",user.getAge());
-//        param.addProperty("id",user.getId());
-//        param.addProperty("isDelete",user.getIsDelete());
-//        param.addProperty("sex",user.getSex());
-//
-//        post.setHeader("Content-type","application/json");
-//        post.addHeader("Cookie",TestConfig.cookieStore.toString());
-//
-//        StringEntity entity = new StringEntity(param.toString(),"UTF-8");
-//        post.setEntity(entity);
-//
-//        String result;
-//        CloseableHttpResponse response = TestConfig.httpClient.execute(post);
-//
-//        result = EntityUtils.toString(response.getEntity(),"UTF-8");
-//
-//        //登录成功返回cookiestore；
-//        TestConfig.cookieStore = (BasicCookieStore) TestConfig.cookieStore.getCookies();
-//
-//        System.out.println("结果返回查看result"+result);
-//        return  result;
-//
-//
-//
-//    }
 
 
-    @Test(groups = "loginTrue",description = "用户登录失败接口测试")
+
+    @Test(groups = "loginTrue",description = "用户登录成功接口测试")
     public void loginTrue() throws IOException {
         SqlSession sqlSession = DataBaseUtil.getSqlSession();
-        LoginCase loginCase = sqlSession.selectOne("loginCase",2);
+        LoginCase loginCase = sqlSession.selectOne("loginCase",1);
+
         System.out.println(loginCase.toString());
         System.out.println(TestConfig.loginUri);
 
-        String result = getResult(loginCase);
+        Boolean result = getResult(loginCase);
+        Assert.assertTrue(result);
+
+
+
 
     }
 
-    private String getResult(LoginCase loginCase) throws IOException {
+    private Boolean getResult(LoginCase loginCase) throws IOException {
         HttpPost post = new HttpPost(TestConfig.loginUri);
+
         JsonObject param = new JsonObject();
-        param.addProperty("userName",loginCase.getUserName());
         param.addProperty("password",loginCase.getPassword());
-        param.addProperty("id",loginCase.getId());
-        param.addProperty("expected",loginCase.getExpected());
-        //param.addProperty("id",loginCase.getId());
+        param.addProperty("userName",loginCase.getUserName());
 
         post.setHeader("Content-type","application/json");
-        post.addHeader("Cookie",TestConfig.cookieStore.toString());
+        post.addHeader("cookie",TestConfig.cookieStore.toString());
 
-       StringEntity entity = new StringEntity(param.toString(),"UTF-8");
+        StringEntity entity = new StringEntity(param.toString(),"UTF-8");
         post.setEntity(entity);
-
-       String result;
         CloseableHttpResponse response = TestConfig.httpClient.execute(post);
 
-       result = EntityUtils.toString(response.getEntity(),"UTF-8");
-        //登录成功返回cookiestore；
-        TestConfig.cookieStore = (BasicCookieStore) TestConfig.cookieStore.getCookies();
+        Boolean result;
+        result = Boolean.valueOf(EntityUtils.toString(response.getEntity(),"utf-8"));
 
-        System.out.println("结果返回查看result"+result);
-       return  result;
+        System.out.println(result);
 
-
-
+        return result;
 
     }
+
 
 }

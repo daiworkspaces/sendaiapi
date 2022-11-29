@@ -32,8 +32,9 @@ public class AddUserTest {
         String result = getResult(addUserCase);
 
         //验证返回结果
-        User user = sqlSession.selectOne("addUser",addUserCase);
-        Assert.assertEquals(addUserCase.getExpected(),result);
+
+        User user = sqlSession.selectOne("addUser",addUserCase.getUserName());
+        Assert.assertEquals(user,result);
 
     }
 

@@ -6,7 +6,7 @@
             <class name="com.course.cases.LoginTest">
                 <methods>
                     <include name="loginTrue"/>
-                    <include name="loginFalse"/>
+
                 </methods>
             </class>
 

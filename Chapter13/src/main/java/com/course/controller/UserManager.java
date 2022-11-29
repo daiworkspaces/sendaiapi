@@ -7,15 +7,14 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Log4j2
@@ -27,17 +26,30 @@ public class UserManager {
     @Autowired
     private SqlSessionTemplate template;
 
+
+
+
     @ApiOperation(value = "登录接口",httpMethod = "POST")
     @RequestMapping(value = "/login",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
-    public Boolean login(HttpServletResponse response , @RequestBody User user){
-        int i = template.selectOne("login",1);
-        log.info("传递进去的user参数"+user.toString());
-        log.info("查询语句login"+ template.toString());
+    public Boolean login(HttpServletResponse response ,@RequestBody Map<String,String> params)
+    {
+        System.out.println("查看传递进来的参数params"+params.toString());
+//
+//        User user = new User();
+//        params = new HashMap<>();
+//        params.put("userName", user.getUserName() );
+//        params.put("password", user.getUserName());
+
+
+        int i = template.selectOne("loginCase",params);
+        System.out.println(template.toString());
+
+        System.out.println("================="+i);
+
         Cookie cookie = new Cookie("login","true");
         response.addCookie(cookie);
-        log.info("查询到的结果是："+i);
         if (i==1){
-            log.info("登录的用户是："+user.getUserName());
+
             return  true;
         }
         return false;
@@ -72,9 +84,9 @@ public class UserManager {
         }
         }
 
-        @ApiOperation(value = "更新/删除用户接口",httpMethod = "POST")
-        @RequestMapping(value = "/updateUserInfo",method = RequestMethod.POST)
-        public int updateUser(HttpServletRequest request,@RequestBody User user){
+    @ApiOperation(value = "更新/删除用户接口",httpMethod = "POST")
+    @RequestMapping(value = "/updateUserInfo",method = RequestMethod.POST)
+    public int updateUser(HttpServletRequest request,@RequestBody User user){
         Boolean x = verifyCookies(request);
         int i = 0;
         if (x.equals(true)){
