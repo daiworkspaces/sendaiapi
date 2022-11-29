@@ -48,7 +48,7 @@ public class UserManager {
 
         Cookie cookie = new Cookie("login","true");
         response.addCookie(cookie);
-        if (i==1){
+        if (i >= 1){
 
             return  true;
         }

@@ -31,6 +31,6 @@
 
 
     <select id="addUser" parameterType="com.course.model.User" resultType="Integer">
-        count (1) from user  where userName = #{user}
+      select  count (1) from user  where userName = #{user}
     </select>
 </mapper>
