@@ -27,7 +27,7 @@ public class UpdateUserInfoTest {
         Thread.sleep(3000);
         int result = getResult(updateUserInfoCase);
 
-        User user = sqlSession.selectOne(updateUserInfoCase.getExpected());
+        User user = sqlSession.selectOne("updateUserInfoCase",updateUserInfoCase.getExpected());
         System.out.println(user.toString());
         System.out.println(result);
         Assert.assertNotNull(user);

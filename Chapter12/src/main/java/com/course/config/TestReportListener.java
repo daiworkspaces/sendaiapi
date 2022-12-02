@@ -24,7 +24,9 @@ public class TestReportListener implements IReporter {
     // 定义报告生成的路径
     //定义生成测试报告的路径和文件名，为兼容windows和Linux此处使用File.separator代替分隔符
 
-    private String reportDirPath = System.getProperty("user.dir") + File.separator + "target" + File.separator + "test-output" + File.separator + "report";
+    //private String reportDirPath = System.getProperty("user.dir") + File.separator + "target" + File.separator + "test-output" + File.separator + "report";
+    private String reportDirPath = System.getProperty("user.dir") + File.separator + "target" + File.separator  + File.separator + "report";
+
     private String reportPath = reportDirPath + File.separator + getReportName + ".html";
     private String name = "DemoTest";
     private int testsPass;
