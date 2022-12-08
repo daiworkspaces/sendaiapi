@@ -30,9 +30,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-               <configuration>
-                   <mainClass>com.course.Application</mainClass>
-               </configuration>
+                <configuration>
+                    <mainClass>com.course.Application</mainClass>
+                </configuration>
 
                 <executions>
                     <execution>
