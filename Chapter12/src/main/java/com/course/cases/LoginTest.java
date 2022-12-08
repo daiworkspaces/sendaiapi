@@ -54,7 +54,8 @@ public class LoginTest {
         System.out.println(TestConfig.loginUri);
 
         Boolean result = getResult(loginCase);
-        Assert.assertTrue(result);
+        //Assert.assertTrue(result);
+        Assert.assertFalse(result);
 
 
 
