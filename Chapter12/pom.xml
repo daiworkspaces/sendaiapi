@@ -92,6 +92,9 @@
                         <suiteXmlFile>
                             ./src/main/resources/testng.xml
                         </suiteXmlFile>
+                        <suiteXmlFile>
+                            ./src/test/resources/testng.xml
+                        </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
