@@ -15,7 +15,8 @@ public class TestReportListener implements IReporter {
     private static Date date = new Date();
     private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd==HH时mm分ss秒SSS毫秒");
     private static String reportdate = simpleDateFormat.format(date);
-    private static String getReportName = "接口自动化测试报告" + reportdate;
+    //private static String getReportName = "接口自动化测试报告" + reportdate;
+    private static String getReportName = "testRep";
     //private static String getReportName = "接口自动化测试报告";
     // 定义html模板所在路径
     private String templatePath = this.getClass().getResource("/").getPath() + "report/template.html";
