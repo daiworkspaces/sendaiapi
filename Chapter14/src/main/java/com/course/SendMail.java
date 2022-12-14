@@ -1,6 +1,8 @@
 package com.course;
-
+/**
 import com.sun.mail.util.MailSSLSocketFactory;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeBodyPart;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeMultipart;
 import org.testng.annotations.Test;
 
 import javax.mail.*;
@@ -15,7 +17,12 @@ import java.util.Properties;
 
 import static org.testng.reporters.Files.readFile;
 
+
 public class SendMail {
+    final Properties properties = new Properties();
+    properties.load(SendMail.class.getResource)
+
+    //properties.load(SendMail.class.getResourceAsStream("/config.properties"));
 
     @Test
     public void sendText() throws IOException, MessagingException, GeneralSecurityException {
@@ -26,10 +33,10 @@ public class SendMail {
         sf.setTrustAllHosts(true);
         // 定义属性配置对象
         final Properties properties = new Properties();
-       // properties.setProperty( "mail.transport.protocol", "SMTP" );
-       // properties.setProperty( "mail.host", "smtp.163.com" );
-       // properties.setProperty( "mail.smtp.auth", "true" );// 指定验证为true是否需要身份验证
-        //properties.setProperty( "mail.smtp.ssl.enable", "true" );
+       properties.setProperty( "mail.transport.protocol", "SMTP" );
+        properties.setProperty( "mail.host", "smtp.163.com" );
+        properties.setProperty( "mail.smtp.auth", "true" );// 指定验证为true是否需要身份验证
+        properties.setProperty( "mail.smtp.ssl.enable", "true" );
         properties.put( "mail.smtp.ssl.socketFactory",sf );
 
         //从配置文件中加载配置属性
@@ -69,11 +76,11 @@ public class SendMail {
     @Test
     public void sendHtml() throws MessagingException, IOException {
         // 定义属性配置对象
-        final Properties properties = new Properties();
+       // final Properties properties = new Properties();
         //协议
 
         //从配置文件中加载配置属性
-        properties.load(SendMail.class.getResourceAsStream("/config.properties"));
+        //properties.load(SendMail.class.getResourceAsStream("/config.properties"));
         Authenticator auth = new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -141,7 +148,7 @@ public class SendMail {
 
 
 
-
+**/
 
 
 
