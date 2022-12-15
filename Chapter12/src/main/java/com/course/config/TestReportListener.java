@@ -122,6 +122,9 @@ public class TestReportListener implements IReporter {
             result.put("beginTime", beginTime);
             result.put("totalTime", totalTime + "ms");
             result.put("testResult", listInfo);
+
+            System.out.println("result:"+result.toString());
+
             Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
             String template = this.read(reportDirPath, templatePath);
             BufferedWriter output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(reportPath)), "UTF-8"));
