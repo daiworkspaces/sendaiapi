@@ -8,6 +8,7 @@ public class Testmail {
     public static void main(String[] args) throws MessagingException, GeneralSecurityException, IOException {
         SendEmail se = new SendEmail();
         se.sendHtml();
+        //ceshidaidsjfk
 
     }
 
